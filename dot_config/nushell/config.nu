@@ -252,6 +252,8 @@ source ~/.config/nushell/completions/bat.nu
 source ~/.config/nushell/completions/just.nu
 source ~/.config/nushell/completions/zellij.nu
 source ~/.config/nushell/completions/zoxide.nu
+source ~/.config/nushell/completions/git.nu
+source ~/.config/nushell/completions/just.nu
 
 # aliases
 source ~/.config/nushell/aliases.nu

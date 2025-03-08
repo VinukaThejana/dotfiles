@@ -154,6 +154,7 @@ path add $env.ANDROID_HOME + '/cmdline-tools/bin'
 path add $env.ANDROID_HOME + '/platform-tools'
 
 path add ($env.HOME | path join '.bun' 'bin')
+path add ($env.HOME | path join '.cache' '.bun' 'bin')
 
 path add ($env.HOME | path join 'bin')
 
