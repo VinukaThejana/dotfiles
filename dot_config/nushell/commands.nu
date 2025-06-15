@@ -9,6 +9,17 @@ def rmbg [
   removebg --api-key (op read "op://Development/remove.bg/credential") $file
 }
 
+# change the current working directory to the one specified in the yazi config
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+
 # uncompress any compressed file without any hazzle
 def ex [
   file: path # the compressed file
