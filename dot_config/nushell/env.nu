@@ -168,6 +168,8 @@ path add ($env.HOME | path join '.npm' 'bin')
 
 path add ($env.CARGO_HOME | path join 'bin')
 
+path add '~/.dotnet/tools'
+
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
