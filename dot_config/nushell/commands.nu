@@ -181,6 +181,17 @@ def ipfs.view [
   open $"https://cloudflare-ipfs.com/ipfs/($cid)"
 }
 
+# list the latest n files in the current directory
+def latest [
+  n: int = 10 # number of files to list
+] {
+  if ($n <= 0) {
+    return "please provide a valid number of files to list" | echo
+  }
+
+  ls | sort-by modified --reverse | first ($n)
+}
+
 # encrypt a file using gpg
 def encrypt [
   file: path # the file to encrypt
