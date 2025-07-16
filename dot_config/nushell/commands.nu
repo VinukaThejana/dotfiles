@@ -274,3 +274,15 @@ def random.string [] {
   echo $vinuka | pbcopy
   print $vinuka
 }
+
+# upload a file to a presigned URL
+def upload_to_presigned [
+  file: path, # the file to upload
+  url: string # the presigned URL to upload to
+] {
+  if (not ($file | path exists)) or ($file | path type) != "file" {
+    return $"($file) is not a valid file" | echo
+  }
+
+  curl -X PUT -T $file $url --header "Content-Type: application/octet-stream" --silent --show-error --fail
+}
