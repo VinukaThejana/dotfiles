@@ -1,0 +1,216 @@
+{
+  description = "nix-darwin system flake";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    jorgelbg-tap = {
+      url = "github:jorgelbg/homebrew-tap";
+      flake = false;
+    };
+  };
+
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, ... }:
+  let
+    configuration = { pkgs, ... }: {
+      system.primaryUser = "vinuka";
+      nixpkgs.config.allowUnfree = true;
+      
+      # Cleaned, de-duplicated, and sorted list of system packages
+      environment.systemPackages = with pkgs; [
+        # --- Development Toolchains & Runtimes ---
+        cmake
+        cocoapods
+        go
+        gradle
+        jdt-language-server # Formerly `jdtls` from Homebrew
+        jdk          # A more generic alias for `openjdk`
+        lua
+        luajit
+        maven
+        nodejs
+        php
+        pnpm
+        python3
+        ruby
+        rustup
+        tree-sitter
+
+        # -- CLI user applications --
+        atuin
+        bat
+        biome
+        carapace
+        chezmoi
+        curl
+        diff-so-fancy
+        dprint
+        entr
+        eza
+        fd
+        fzf
+        glow
+        htop
+        jq
+        just
+        lazydocker
+        lazygit
+        lf
+        mpg123
+        neovim
+        nushell
+        p7zip
+        ripgrep
+        skim
+        starship
+        html-tidy
+        tmux
+        unzip
+        wget
+        yazi
+
+        # --- Version Control ---
+        git
+        gh
+        jj
+
+        # --- Services & Networking ---
+        doppler
+        flyctl
+        gnupg
+        grpcurl
+        redis
+        rtorrent
+        sqlc
+        sqlite       # Provides the `sqlite3` CLI
+        usql
+
+        # --- Media & Document Processing ---
+        ffmpeg
+        ghostscript
+        hadolint
+        imagemagick
+        jpegoptim
+        libwebp
+        poppler      # Provides PDF tools like `pdftotext`
+        resvg        # For SVG rendering
+        tesseract
+        yt-dlp
+      ];
+
+      homebrew = {
+        enable = true;
+
+        onActivation.cleanup = "zap";
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
+
+        casks = [
+          "1password"
+          "1password-cli"
+          "orbstack"
+          "android-commandlinetools"
+          "android-platform-tools"
+          "apidog"
+          "ghostty"
+          "notion"
+          "tableplus"
+          "stremio"
+          "balenaetcher"
+          "telegram"
+          "spotify"
+          "bambu-studio"
+        ];
+        brews = [
+          #-- Development Toolchains & Runtimes --
+          "php-code-sniffer"
+
+          #-- Media & Document Processing --
+          "jpeg-xl"
+
+          #-- CLI user applications --
+          "iredis"
+          "mas"
+
+          #-- Tocuh ID and Security --
+          "pinentry"
+          "pinentry-mac"
+          "pinentry-touchid"
+        ];
+
+        masApps = {
+          #-- Social Media -- 
+          "Slack for Desktop" = 803453959;
+          "WhatsApp" = 310633997;
+
+          #-- Creative Applications--
+          "Canva" = 897446215;
+        };
+      };
+
+      fonts.packages = [ ];
+
+      system.defaults = {
+        #--- Dock related settings--
+        dock.autohide = true;
+        dock.persistent-apps = [
+            "/Applications/Safari.app"
+            "/Applications/Ghostty.app"
+            "/System/Applications/Mail.app"
+            "/System/Applications/System Settings.app/"
+            "/System/Applications/iPhone Mirroring.app/"
+        ];
+        dock.show-recents = true;
+
+        #-- Finder related settings--
+        finder.FXPreferredViewStyle = "clmv";
+        finder.ShowPathbar = true;
+        finder.ShowStatusBar = true;
+        finder._FXShowPosixPathInTitle = true;
+      };
+
+      nix.settings.experimental-features = "nix-command flakes";
+
+      system.configurationRevision = self.rev or self.dirtyRev or null;
+
+      system.stateVersion = 6;
+
+      nixpkgs.hostPlatform = "aarch64-darwin";
+    };
+  in
+  {
+    darwinConfigurations."Vinukas-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = true;
+            user = "vinuka";
+            mutableTaps = true;
+            taps = {
+              "homebrew/homebrew-core" = homebrew-core;
+              "homebrew/homebrew-cask" = homebrew-cask;
+              "jorgelbg/tap" = jorgelbg-tap;
+            };
+          };
+        }
+        ({config, ...}: {
+          homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+        })
+      ];
+    };
+  };
+}

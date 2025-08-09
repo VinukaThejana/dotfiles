@@ -105,14 +105,11 @@ $env.config.buffer_editor = 'nvim'
 $env.EDITOR = 'nvim'
 $env.VISUAL = 'nvim'
 
-$env.LDFLAGS = '-L/opt/homebrew/opt/curl/lib'
-$env.CPPFLAGS = '-I/opt/homebrew/opt/curl/include'
-$env.PKG_CONFIG_PATH = '/opt/homebrew/opt/curl/lib/pkgconfig'
-$env.CPPFLAGS = '-I/opt/homebrew/opt/openjdk/include'
+$env.LDFLAGS = '-L/opt/homebrew/lib/pkgconfig'
+$env.CPPFLAGS = '-I/opt/homebrew/include'
+$env.PKG_CONFIG_PATH = '/opt/homebrew/lib/pkgconfig'
 
 $env.PNPM_HOME = $env.HOME + '/.local/share/pnpm'
-$env.LUA_PATH = '/opt/homebrew/share/lua/5.4/?.lua;/opt/homebrew/share/lua/5.4/?/init.lua;/opt/homebrew/lib/lua/5.4/?.lua;/opt/homebrew/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua'
-$env.LUA_CPATH = '/opt/homebrew/lib/lua/5.4/?.so;/opt/homebrew/lib/lua/5.4/loadall.so;./?.so'
 
 $env.XDG_DATA_HOME = $env.HOME + '/.local/share'
 $env.XDG_CONFIG_HOME = $env.HOME + '/.config'
@@ -123,12 +120,12 @@ $env.GOPATH = $env.HOME + '/go'
 $env.CARGO_HOME = $env.XDG_DATA_HOME + '/cargo'
 $env.GHCUP_USE_XDG_DIRS = true
 $env.GOPATH = $env.XDG_DATA_HOME + '/go'
-$env.GTK2_RC_FILES = $env.XDG_CONFIG_HOME + '/gtk-2.0/gtkrc'
 $env.GNUPGHOME = $env.XDG_DATA_HOME + '/gnupg'
 $env.GPG_TTY = ^tty
 $env.ANDROID_HOME = $env.HOME + '/Library/Android/sdk'
 $env.ANDROID_NDK_HOME = "/opt/homebrew/share/android-ndk"
 
+$env.NIX_CONF_DIR = $env.HOME + '/.config/nix'
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 
 use std 'path add'
@@ -144,11 +141,15 @@ path add ($env.HOME | path join '.orbstack' 'bin')
 
 path add '/cmd'
 
+path add '/run/current-system/sw/bin'
+
 path add '/opt/homebrew/bin'
 path add '/opt/homebrew/sbin'
 path add '/opt/homebrew/bin/flutter'
 path add '/opt/homebrew/opt/ruby/bin'
 path add '/opt/homebrew/opt/openjdk/bin'
+
+path add '/nix/var/nix/profiles/default/bin'
 
 path add '~/projects/third-party/flutter/bin'
 path add $env.ANDROID_HOME
