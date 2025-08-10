@@ -79,6 +79,7 @@
         unzip
         wget
         yazi
+        google-cloud-sdk
 
         # --- Version Control ---
         git
