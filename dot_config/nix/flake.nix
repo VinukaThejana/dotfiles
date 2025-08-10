@@ -117,6 +117,8 @@
         onActivation.upgrade = true;
 
         casks = [
+
+          #-- Development Tools--
           "1password"
           "1password-cli"
           "orbstack"
@@ -124,12 +126,21 @@
           "android-platform-tools"
           "apidog"
           "ghostty"
-          "notion"
           "tableplus"
-          "stremio"
           "balenaetcher"
+          "postman"
+
+          #-- Note taking and Productivity --
+          "notion"
+
+          #-- Social Media--
           "telegram"
+
+          #-- Entetainment --
           "spotify"
+          "stremio"
+
+          #-- 3D Printing--
           "bambu-studio"
         ];
         brews = [
