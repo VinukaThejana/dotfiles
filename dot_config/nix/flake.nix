@@ -130,6 +130,7 @@
           "tableplus"
           "balenaetcher"
           "postman"
+          "kindavim"
 
           #-- Note taking and Productivity --
           "notion"
@@ -140,6 +141,7 @@
           #-- Entetainment --
           "spotify"
           "stremio"
+          "iina"
 
           #-- 3D Printing--
           "bambu-studio"
