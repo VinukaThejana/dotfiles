@@ -1,5 +1,5 @@
 # ui
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:e-ink-dark,light:e-ink
 
 # configurations
 mouse-hide-while-typing = true
