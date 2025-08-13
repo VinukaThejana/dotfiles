@@ -131,6 +131,7 @@
           "balenaetcher"
           "postman"
           "kindavim"
+          "zed"
 
           #-- Note taking and Productivity --
           "notion"
@@ -149,6 +150,8 @@
         brews = [
           #-- Development Toolchains & Runtimes --
           "php-code-sniffer"
+          "protobuf"
+          "protoc-gen-go"
 
           #-- Media & Document Processing --
           "jpeg-xl"
