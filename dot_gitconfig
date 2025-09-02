@@ -14,6 +14,9 @@
 [includeIf "gitdir:~/Documents/university/"]
   path = ~/.config/gitconfig/gitconfig.uni
 
+[includeIf "gitdir:~/projects/polyvoxel/"]
+  path = ~/.config/gitconfig/gitconfig.polyvoxel
+
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
