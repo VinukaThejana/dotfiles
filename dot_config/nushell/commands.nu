@@ -286,3 +286,20 @@ def upload_to_presigned [
 
   curl -X PUT -T $file $url --header "Content-Type: application/octet-stream" --silent --show-error --fail
 }
+
+def create_session [
+  name: string, # the name of the session
+  advanced: bool = false # whether to create an advanced session with database, redis connections
+] {
+  tmux new-session -d -s $name -n editor nvim
+  tmux new-window -t $name -n terminal
+  tmux new-window -t $name -n server
+
+  if $advanced {
+    tmux new-window -t $name -n database
+    tmux new-window -t $name -n redis
+  }
+
+  tmux select-window -t $"($name):editor"
+  tmux attach-session -t $name
+}
