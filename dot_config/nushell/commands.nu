@@ -303,3 +303,7 @@ def create_session [
   tmux select-window -t $"($name):editor"
   tmux attach-session -t $name
 }
+
+def --env add_op_srv [] {
+  $env.OP_SERVICE_ACCOUNT_TOKEN = (op read "op://Development/tgx56upbpeiegx7f75xitqyl3m/credential")
+}
