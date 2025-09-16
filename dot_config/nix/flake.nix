@@ -126,12 +126,16 @@
           "android-commandlinetools"
           "android-platform-tools"
           "apidog"
-          "ghostty"
+          "ghostty@tip"
           "tableplus"
           "balenaetcher"
           "postman"
           "kindavim"
           "zed"
+          "rar"
+
+          #-- SDKs and Runtimes --
+          "dotnet-sdk"
 
           #-- Note taking and Productivity --
           "notion"
@@ -146,6 +150,9 @@
 
           #-- 3D Printing--
           "bambu-studio"
+
+          #-- System Utilities --
+          "anydesk"
         ];
         brews = [
           #-- Development Toolchains & Runtimes --
