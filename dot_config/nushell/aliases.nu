@@ -28,6 +28,6 @@ alias lg = lazygit
 alias pinentry = pinentry-mac
 
 alias rebuild = sudo darwin-rebuild switch --flake ~/.config/nix
-alias flake-update = nix flake --extra-experimental-features "nix-command flakes" update
+alias flake-update = nix flake update
 
 ('/usr/bin/paru' | path exists) and ('/usr/bin/yay' | path exists) and (alias yay = paru)

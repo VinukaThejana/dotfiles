@@ -135,3 +135,51 @@ let light_theme = {
     shape_vardecl: purple
     shape_raw_string: light_purple
 }
+
+# --- Nushell E-Ink Dark Theme (Elegant Edition) ---
+# A minimal, grayscale theme focused on readability and a calm, elegant aesthetic.
+# It uses subtle variations in brightness and style to create a clear visual hierarchy.
+
+let e_ink_dark_theme = {
+    # The color of the table separator. Kept subtle to not distract from the data.
+    separator: '#5E5E5E'
+
+    # The background color for leading/trailing whitespace in tables.
+    leading_trailing_space_bg: '#333333'
+
+    # The style for table headers. Brighter and bold to clearly label columns.
+    header: [ '#B8B8B8', bold ]
+
+    # --- Data Type Styling ---
+    # Primitive values are styled to create a visual rhythm in tables.
+    primitive_int: '#A4A4A4'
+    primitive_filesize: '#A4A4A4'
+    primitive_string: '#C2C2C2'
+    primitive_date: '#7C7C7C' # Dates recede slightly as secondary info.
+    primitive_boolean: '#B8B8B8'
+    primitive_nothing: [ '#686868', dim ] # Null values are dimmed significantly.
+
+    # --- Syntax Highlighting and `ls` Colors ("Shapes") ---
+    # This is the core of the theme, defining how different items look.
+    shape_directory: [ '#B8B8B8', bold ]  # Directories are bright and bold for easy navigation.
+    shape_symlink: [ '#A4A4A4', italic ] # Symlinks are distinct but not overpowering.
+    shape_file: '#C2C2C2'              # Regular files are the standard text color.
+    shape_executable: [ '#7C7C7C', dim ] # Executables are dimmed to reduce visual noise.
+    shape_flag: '#A4A4A4'             # Command flags.
+    shape_custom: '#B8B8B8'            # Custom shapes.
+
+    # Shapes for syntax highlighting within the shell.
+    shape_keyword: [ '#868686', bold ]
+    shape_operator: '#A4A4A4'
+    shape_pipe: '#A4A4A4'
+    shape_variable: '#CCCCCC' # Variables are the brightest element to stand out in code.
+    shape_string: '#C2C2C2'
+    shape_string_interpolation: '#A4A4A4'
+    shape_matching_paren: [ '#CCCCCC', underline ] # Makes matching parentheses very clear.
+
+    # --- Status and Feedback ---
+    # High contrast for errors is crucial for usability.
+    shape_error: [ '#CCCCCC', bold, reverse ]
+    # Hints for commands are dimmed to be helpful without being intrusive.
+    hint: [ '#686868', dim ]
+}

@@ -15,7 +15,7 @@ $env.config = {
     }
 
     rm: {
-        always_trash: false
+        always_trash: true
     }
 
     table: {

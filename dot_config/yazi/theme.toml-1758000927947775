@@ -2,7 +2,7 @@
 # A minimal, grayscale theme focused on readability and a calm, elegant aesthetic.
 # It uses subtle variations in brightness and style (dim, italic) to create visual hierarchy.
 
-[mgr]
+[manager]
 # The base canvas: a dark gray background with a light gray foreground.
 foreground = "#C2C2C2"
 background = "#333333"

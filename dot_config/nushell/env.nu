@@ -101,6 +101,8 @@ $env.NU_PLUGIN_DIRS = [
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
+$env.LS_COLORS = 'di=01;34:ln=36:ex=32:*.zip=31:*.tar=31:*.gz=31'
+
 $env.config.buffer_editor = 'nvim'
 $env.EDITOR = 'nvim'
 $env.VISUAL = 'nvim'
@@ -127,6 +129,8 @@ $env.ANDROID_NDK_HOME = "/opt/homebrew/share/android-ndk"
 
 $env.NIX_CONF_DIR = $env.HOME + '/.config/nix'
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+
+$env.DOTNET_ROOT = $env.HOME + '/.dotnet'
 
 use std 'path add'
 
@@ -170,6 +174,7 @@ path add ($env.HOME | path join '.npm' 'bin')
 path add ($env.CARGO_HOME | path join 'bin')
 
 path add '~/.dotnet/tools'
+path add $env.DOTNET_ROOT
 
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
