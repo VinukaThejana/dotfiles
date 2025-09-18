@@ -48,7 +48,6 @@
         tree-sitter
 
         # -- CLI user applications --
-        atuin
         bat
         biome
         carapace
@@ -166,6 +165,7 @@
           #-- CLI user applications --
           "iredis"
           "mas"
+          "atuin"
 
           #-- Tocuh ID and Security --
           "pinentry"

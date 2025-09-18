@@ -117,6 +117,7 @@ $env.XDG_DATA_HOME = $env.HOME + '/.local/share'
 $env.XDG_CONFIG_HOME = $env.HOME + '/.config'
 $env.XDG_STATE_HOME = $env.HOME + '/.local/state'
 $env.XDG_CACHE_HOME = $env.HOME + '/.cache'
+$env.XDG_RUNTIME_DIR = '/tmp/runtime-' + $env.USER
 
 $env.GOPATH = $env.HOME + '/go'
 $env.CARGO_HOME = $env.XDG_DATA_HOME + '/cargo'

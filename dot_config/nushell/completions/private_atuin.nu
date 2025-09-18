@@ -63,6 +63,14 @@ module completions {
     --help(-h)                # Print help
   ]
 
+  # Delete duplicate history entries (that have the same command, cwd and hostname)
+  export extern "atuin history dedup" [
+    --dry-run(-n)             # List matching history lines without performing the actual deletion
+    --before(-b): string      # Only delete results added before this date
+    --dupkeep: string         # How many recent duplicates to keep
+    --help(-h)                # Print help
+  ]
+
   # Print this message or the help of the given subcommand(s)
   export extern "atuin history help" [
   ]
@@ -88,6 +96,10 @@ module completions {
 
   # Delete history entries matching the configured exclusion filters
   export extern "atuin history help prune" [
+  ]
+
+  # Delete duplicate history entries (that have the same command, cwd and hostname)
+  export extern "atuin history help dedup" [
   ]
 
   # Print this message or the help of the given subcommand(s)
@@ -244,6 +256,7 @@ module completions {
     --human                   # Use human-readable formatting for time
     ...query: string
     --cmd-only                # Show only the text of the command
+    --print0                  # Terminate the output with a null, for better multiline handling
     --delete                  # Delete anything matching this query. Will not print out the match
     --delete-it-all           # Delete EVERYTHING!
     --reverse(-r)             # Reverse the order of results, oldest first
@@ -251,6 +264,7 @@ module completions {
     --tz: string              # Display the command time in another timezone other than the configured default
     --format(-f): string      # Available variables: {command}, {directory}, {duration}, {user}, {host}, {time}, {exit} and {relativetime}. Example: --format "{time} - [{duration}] - {directory}$\t{command}"
     --inline-height: string   # Set the maximum number of lines Atuin's interface should take up
+    --include-duplicates      # Include duplicate commands in the output (non-interactive only)
     --help(-h)                # Print help (see more with '--help')
   ]
 
@@ -305,6 +319,7 @@ module completions {
     --help(-h)                # Print help
   ]
 
+  # Register a new account
   export extern "atuin account register" [
     --username(-u): string
     --password(-p): string
@@ -329,6 +344,12 @@ module completions {
     --help(-h)                # Print help
   ]
 
+  # Verify your account
+  export extern "atuin account verify" [
+    --token(-t): string
+    --help(-h)                # Print help
+  ]
+
   # Print this message or the help of the given subcommand(s)
   export extern "atuin account help" [
   ]
@@ -337,6 +358,7 @@ module completions {
   export extern "atuin account help login" [
   ]
 
+  # Register a new account
   export extern "atuin account help register" [
   ]
 
@@ -352,6 +374,10 @@ module completions {
   export extern "atuin account help change-password" [
   ]
 
+  # Verify your account
+  export extern "atuin account help verify" [
+  ]
+
   # Print this message or the help of the given subcommand(s)
   export extern "atuin account help help" [
   ]
@@ -361,22 +387,37 @@ module completions {
     --help(-h)                # Print help
   ]
 
+  # Set a key-value pair
   export extern "atuin kv set" [
-    --key(-k): string
-    --namespace(-n): string
-    value: string
+    --key(-k): string         # Key to set
+    value: string             # Value to store
+    --namespace(-n): string   # Namespace for the key-value pair
     --help(-h)                # Print help
   ]
 
+  # Delete one or more key-value pairs
+  export extern "atuin kv delete" [
+    ...keys: string           # Keys to delete
+    --namespace(-n): string   # Namespace for the key-value pair
+    --help(-h)                # Print help
+  ]
+
+  # Retrieve a saved value
   export extern "atuin kv get" [
-    key: string
-    --namespace(-n): string
+    key: string               # Key to retrieve
+    --namespace(-n): string   # Namespace for the key-value pair
     --help(-h)                # Print help
   ]
 
+  # List all keys in a namespace, or in all namespaces
   export extern "atuin kv list" [
-    --namespace(-n): string
-    --all-namespaces(-a)
+    --namespace(-n): string   # Namespace to list keys from
+    --all-namespaces(-a)      # List all keys in all namespaces
+    --help(-h)                # Print help
+  ]
+
+  # Rebuild the KV store
+  export extern "atuin kv rebuild" [
     --help(-h)                # Print help
   ]
 
@@ -384,13 +425,24 @@ module completions {
   export extern "atuin kv help" [
   ]
 
+  # Set a key-value pair
   export extern "atuin kv help set" [
   ]
 
+  # Delete one or more key-value pairs
+  export extern "atuin kv help delete" [
+  ]
+
+  # Retrieve a saved value
   export extern "atuin kv help get" [
   ]
 
+  # List all keys in a namespace, or in all namespaces
   export extern "atuin kv help list" [
+  ]
+
+  # Rebuild the KV store
+  export extern "atuin kv help rebuild" [
   ]
 
   # Print this message or the help of the given subcommand(s)
@@ -625,6 +677,82 @@ module completions {
   export extern "atuin dotfiles help help" [
   ]
 
+  # Manage your scripts with Atuin
+  export extern "atuin scripts" [
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts new" [
+    name: string
+    --description(-d): string
+    --tags(-t): string
+    --shebang(-s): string
+    --script: path
+    --last: string            # Use the last command as the script content Optionally specify a number to use the last N commands
+    --no-edit                 # Skip opening editor when using --last
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts run" [
+    name: string
+    --var(-v): string         # Specify template variables in the format KEY=VALUE Example: -v name=John -v greeting="Hello there"
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts list" [
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts get" [
+    name: string
+    --script(-s)              # Display only the executable script with shebang
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts edit" [
+    name: string
+    --description(-d): string
+    --tags(-t): string        # Replace all existing tags with these new tags
+    --no-tags                 # Remove all tags from the script
+    --rename: string          # Rename the script
+    --shebang(-s): string
+    --script: path
+    --no-edit                 # Skip opening editor
+    --help(-h)                # Print help
+  ]
+
+  export extern "atuin scripts delete" [
+    name: string
+    --force(-f)
+    --help(-h)                # Print help
+  ]
+
+  # Print this message or the help of the given subcommand(s)
+  export extern "atuin scripts help" [
+  ]
+
+  export extern "atuin scripts help new" [
+  ]
+
+  export extern "atuin scripts help run" [
+  ]
+
+  export extern "atuin scripts help list" [
+  ]
+
+  export extern "atuin scripts help get" [
+  ]
+
+  export extern "atuin scripts help edit" [
+  ]
+
+  export extern "atuin scripts help delete" [
+  ]
+
+  # Print this message or the help of the given subcommand(s)
+  export extern "atuin scripts help help" [
+  ]
+
   def "nu-complete atuin init shell" [] {
     [ "zsh" "bash" "fish" "nu" "xonsh" ]
   }
@@ -647,11 +775,17 @@ module completions {
     --help(-h)                # Print help
   ]
 
+  export extern "atuin wrapped" [
+    year?: string
+    --help(-h)                # Print help
+  ]
+
+  # *Experimental* Start the background daemon
   export extern "atuin daemon" [
     --help(-h)                # Print help
   ]
 
-  # Print example configuration
+  # Print the default atuin configuration (config.toml)
   export extern "atuin default-config" [
     --help(-h)                # Print help
   ]
@@ -738,6 +872,10 @@ module completions {
 
   # Delete history entries matching the configured exclusion filters
   export extern "atuin help history prune" [
+  ]
+
+  # Delete duplicate history entries (that have the same command, cwd and hostname)
+  export extern "atuin help history dedup" [
   ]
 
   # Import shell history from file
@@ -828,6 +966,7 @@ module completions {
   export extern "atuin help account login" [
   ]
 
+  # Register a new account
   export extern "atuin help account register" [
   ]
 
@@ -843,17 +982,32 @@ module completions {
   export extern "atuin help account change-password" [
   ]
 
+  # Verify your account
+  export extern "atuin help account verify" [
+  ]
+
   # Get or set small key-value pairs
   export extern "atuin help kv" [
   ]
 
+  # Set a key-value pair
   export extern "atuin help kv set" [
   ]
 
+  # Delete one or more key-value pairs
+  export extern "atuin help kv delete" [
+  ]
+
+  # Retrieve a saved value
   export extern "atuin help kv get" [
   ]
 
+  # List all keys in a namespace, or in all namespaces
   export extern "atuin help kv list" [
+  ]
+
+  # Rebuild the KV store
+  export extern "atuin help kv rebuild" [
   ]
 
   # Manage the atuin data store
@@ -928,6 +1082,28 @@ module completions {
   export extern "atuin help dotfiles var list" [
   ]
 
+  # Manage your scripts with Atuin
+  export extern "atuin help scripts" [
+  ]
+
+  export extern "atuin help scripts new" [
+  ]
+
+  export extern "atuin help scripts run" [
+  ]
+
+  export extern "atuin help scripts list" [
+  ]
+
+  export extern "atuin help scripts get" [
+  ]
+
+  export extern "atuin help scripts edit" [
+  ]
+
+  export extern "atuin help scripts delete" [
+  ]
+
   # Print Atuin's shell init script
   export extern "atuin help init" [
   ]
@@ -940,10 +1116,14 @@ module completions {
   export extern "atuin help doctor" [
   ]
 
+  export extern "atuin help wrapped" [
+  ]
+
+  # *Experimental* Start the background daemon
   export extern "atuin help daemon" [
   ]
 
-  # Print example configuration
+  # Print the default atuin configuration (config.toml)
   export extern "atuin help default-config" [
   ]
 
