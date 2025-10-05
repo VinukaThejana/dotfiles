@@ -132,6 +132,7 @@
           "kindavim"
           "zed"
           "rar"
+          "redis-insight"
 
           #-- SDKs and Runtimes --
           "dotnet-sdk"
@@ -142,6 +143,8 @@
           #-- Social Media--
           "telegram"
 
+          #-- Document and PDF Management --
+
           #-- Entetainment --
           "spotify"
           "stremio"
@@ -149,15 +152,22 @@
 
           #-- 3D Printing--
           "bambu-studio"
+          "openscad"
+          "autodesk-fusion"
 
           #-- System Utilities --
           "anydesk"
+          "windows-app"
+
+          #-- Cloud storage --
+          "google-drive"
         ];
         brews = [
           #-- Development Toolchains & Runtimes --
           "php-code-sniffer"
           "protobuf"
           "protoc-gen-go"
+          "coreutils"
 
           #-- Media & Document Processing --
           "jpeg-xl"
@@ -166,11 +176,13 @@
           "iredis"
           "mas"
           "atuin"
+          "opensca-cli"
 
           #-- Tocuh ID and Security --
           "pinentry"
           "pinentry-mac"
           "pinentry-touchid"
+
         ];
 
         masApps = {
