@@ -113,8 +113,8 @@
         enable = true;
 
         onActivation.cleanup = "zap";
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
+        onActivation.autoUpdate = false;
+        onActivation.upgrade = false;
 
         casks = [
 
@@ -154,6 +154,7 @@
           "bambu-studio"
           "openscad"
           "autodesk-fusion"
+          "freecad"
 
           #-- System Utilities --
           "anydesk"
@@ -168,6 +169,10 @@
           "protobuf"
           "protoc-gen-go"
           "coreutils"
+          "pv"
+
+          #-- AI --
+          "gemini-cli"
 
           #-- Media & Document Processing --
           "jpeg-xl"
@@ -182,7 +187,6 @@
           "pinentry"
           "pinentry-mac"
           "pinentry-touchid"
-
         ];
 
         masApps = {
