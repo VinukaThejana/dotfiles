@@ -182,6 +182,7 @@
           "mas"
           "atuin"
           "opensca-cli"
+          "stripe-cli"
 
           #-- Tocuh ID and Security --
           "pinentry"
