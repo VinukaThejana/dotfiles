@@ -139,6 +139,7 @@
 
           #-- Note taking and Productivity --
           "notion"
+          "zoom"
 
           #-- Social Media--
           "telegram"
