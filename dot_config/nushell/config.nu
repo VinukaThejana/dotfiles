@@ -258,6 +258,9 @@ source ~/.config/nushell/completions/just.nu
 # aliases
 source ~/.config/nushell/aliases.nu
 
+# 1Password
+source ~/.config/nushell/op/plugins.nu
+
 # commands
 source ~/.config/nushell/commands.nu
 source ~/.cache/carapace/init.nu

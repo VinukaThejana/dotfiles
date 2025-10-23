@@ -307,3 +307,19 @@ def create_session [
 def --env add_op_srv [] {
   $env.OP_SERVICE_ACCOUNT_TOKEN = (op read "op://Development/tgx56upbpeiegx7f75xitqyl3m/credential")
 }
+
+# Backdates the last git commit to a specified date.
+def backdate_commit [
+  date: string, # The date to set the commit to (e.g., "Jan 02 15:04:05 2006")
+] {
+  if $date == "" {
+    error make { msg: "Please provide a valid date string." }
+    return
+  }
+
+  let modified_date = $"($date) +0530"
+
+  with-env { GIT_COMMITTER_DATE: $modified_date } {
+    ^git commit --amend --no-edit --date $modified_date
+  }
+}

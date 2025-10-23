@@ -30,6 +30,6 @@ alias pinentry = pinentry-mac
 alias rebuild = sudo darwin-rebuild switch --flake ~/.config/nix
 alias flake-update = nix flake update
 
-alias macopen = run-external open
+alias xdg-open = run-external open
 
 ('/usr/bin/paru' | path exists) and ('/usr/bin/yay' | path exists) and (alias yay = paru)
