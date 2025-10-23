@@ -323,3 +323,13 @@ def backdate_commit [
     ^git commit --amend --no-edit --date $modified_date
   }
 }
+
+def video_resolution [
+  file: path # video file
+] {
+  if ((not ($file | path exists)) or ($file | path type) != "file") {
+    "please provide a valid video file"
+  } else {
+    ^ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 $file
+  }
+}
