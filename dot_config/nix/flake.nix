@@ -133,6 +133,7 @@
           "zed"
           "rar"
           "redis-insight"
+          "visual-studio-code"
 
           #-- SDKs and Runtimes --
           "dotnet-sdk"
@@ -140,6 +141,9 @@
           #-- Note taking and Productivity --
           "notion"
           "zoom"
+
+          #-- AI --
+          "claude-code"
 
           #-- Social Media--
           "telegram"
