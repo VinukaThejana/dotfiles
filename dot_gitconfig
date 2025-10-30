@@ -17,6 +17,9 @@
 [includeIf "gitdir:~/projects/polyvoxel/"]
   path = ~/.config/gitconfig/gitconfig.polyvoxel
 
+[includeIf "gitdir:~/projects/kernel70/"]
+  path = ~/.config/gitconfig/gitconfig.kernel70
+
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f

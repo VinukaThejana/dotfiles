@@ -1,0 +1,31 @@
+# Added by OrbStack: 'orb' SSH host for Linux machines
+# This only works if it's at the top of ssh_config (before any Host blocks).
+# This won't be added again if you remove it.
+Include ~/.orbstack/ssh/config
+
+# Configuration for all hosts
+Host *
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Personal
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+# PolyVoxel (GitLab)
+Host gitlab.com-polyvoxel
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/polyvoxel
+
+Host gitlab.com-kernel70
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/kernel70
+
+# University
+Host github.com-uni
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/uni
