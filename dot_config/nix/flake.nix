@@ -125,7 +125,7 @@
           "android-commandlinetools"
           "android-platform-tools"
           "apidog"
-          "ghostty@tip"
+          "ghostty"
           "tableplus"
           "balenaetcher"
           "postman"
@@ -189,6 +189,7 @@
           "opensca-cli"
           "stripe-cli"
           "xh"
+          "aria2"
 
           #-- Tocuh ID and Security --
           "pinentry"
