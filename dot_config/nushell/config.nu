@@ -282,4 +282,5 @@ $env.config = (
     )
 )
 
+mkdir $"/tmp/runtime-($env.USER)"
 use ~/.cache/starship/init.nu
