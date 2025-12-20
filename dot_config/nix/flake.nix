@@ -164,6 +164,7 @@
           #-- System Utilities --
           "anydesk"
           "windows-app"
+          "obs"
 
           #-- Cloud storage --
           "google-drive"
@@ -190,11 +191,16 @@
           "stripe-cli"
           "xh"
           "aria2"
+          "git-filter-repo"
+          "telnet"
 
           #-- Tocuh ID and Security --
           "pinentry"
           "pinentry-mac"
           "pinentry-touchid"
+
+          #-- Cloud providers --
+          "awscli"
         ];
 
         masApps = {
