@@ -193,6 +193,7 @@
           "aria2"
           "git-filter-repo"
           "telnet"
+          "git-filter-repo"
 
           #-- Tocuh ID and Security --
           "pinentry"
