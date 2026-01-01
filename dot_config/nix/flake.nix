@@ -195,6 +195,7 @@
           "git-filter-repo"
           "telnet"
           "git-filter-repo"
+          "postgresql"
 
           #-- Tocuh ID and Security --
           "pinentry"
