@@ -79,6 +79,7 @@
         wget
         yazi
         google-cloud-sdk
+        ngrok
 
         # --- Version Control ---
         git
