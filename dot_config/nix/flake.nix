@@ -95,6 +95,7 @@
         rtorrent
         sqlc
         sqlite       # Provides the `sqlite3` CLI
+        postgresql_17
         usql
 
         # --- Media & Document Processing ---
@@ -180,6 +181,7 @@
 
           #-- AI --
           "gemini-cli"
+          "ollama"
 
           #-- Media & Document Processing --
           "jpeg-xl"
@@ -195,7 +197,7 @@
           "git-filter-repo"
           "telnet"
           "git-filter-repo"
-          "postgresql"
+          "exiftool"
 
           #-- Tocuh ID and Security --
           "pinentry"
