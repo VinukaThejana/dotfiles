@@ -333,3 +333,11 @@ def video_resolution [
     ^ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 $file
   }
 }
+
+
+def notify [
+  message: string # the message to display in the notification
+] {
+  let secret = (op read "op://Development/3ehhu3n4cwknvnbyjgfxynji5m/password")
+  curl -s -o /dev/null -d ($message) $"ntfy.sh/($secret)"
+}

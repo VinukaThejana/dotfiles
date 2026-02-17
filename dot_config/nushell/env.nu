@@ -133,6 +133,9 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 
 $env.DOTNET_ROOT = $env.HOME + '/.dotnet'
 
+$env.ANTHROPIC_BASE_URL = 'http://localhost:8000'
+$env.ANTHROPIC_API_KEY = 'sk-1234'
+
 use std 'path add'
 
 path add $env.PNPM_HOME
@@ -176,6 +179,8 @@ path add ($env.CARGO_HOME | path join 'bin')
 
 path add '~/.dotnet/tools'
 path add $env.DOTNET_ROOT
+
+path add ~/Library/Python/3.9/bin
 
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
