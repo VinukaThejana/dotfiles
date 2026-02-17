@@ -145,7 +145,6 @@
           "zoom"
 
           #-- AI --
-          "claude-code"
 
           #-- Social Media--
           "telegram"
@@ -181,7 +180,6 @@
 
           #-- AI --
           "gemini-cli"
-          "ollama"
 
           #-- Media & Document Processing --
           "jpeg-xl"
@@ -198,6 +196,7 @@
           "telnet"
           "git-filter-repo"
           "exiftool"
+          "arduino-cli"
 
           #-- Tocuh ID and Security --
           "pinentry"
