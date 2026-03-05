@@ -19,9 +19,13 @@
       url = "github:jorgelbg/homebrew-tap";
       flake = false;
     };
+    asmvik-tap = {
+      url = "github:asmvik/homebrew-formulae";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, asmvik-tap, ... }:
   let
     configuration = { pkgs, ... }: {
       system.primaryUser = "vinuka";
@@ -119,7 +123,6 @@
         onActivation.upgrade = false;
 
         casks = [
-
           #-- Development Tools--
           "1password"
           "1password-cli"
@@ -155,6 +158,7 @@
           "spotify"
           "stremio"
           "iina"
+          "plex"
 
           #-- 3D Printing--
           "bambu-studio"
@@ -166,11 +170,16 @@
           "anydesk"
           "windows-app"
           "obs"
+          "paragon-ntfs"
 
           #-- Cloud storage --
           "google-drive"
         ];
         brews = [
+          #-- Window manager --
+          "asmvik/formulae/yabai"
+          "asmvik/formulae/skhd"
+
           #-- Development Toolchains & Runtimes --
           "php-code-sniffer"
           "protobuf"
@@ -262,6 +271,7 @@
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
               "jorgelbg/tap" = jorgelbg-tap;
+              "asmvik/formulae" = asmvik-tap;
             };
           };
         }
