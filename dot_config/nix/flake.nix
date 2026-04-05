@@ -84,6 +84,7 @@
         yazi
         google-cloud-sdk
         ngrok
+        deno
 
         # --- Version Control ---
         git
@@ -139,6 +140,7 @@
           "rar"
           "redis-insight"
           "visual-studio-code"
+          "programmer-dvorak"
 
           #-- SDKs and Runtimes --
           "dotnet-sdk"
