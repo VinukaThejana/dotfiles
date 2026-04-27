@@ -213,6 +213,7 @@
           "git-filter-repo"
           "exiftool"
           "arduino-cli"
+          "tectonic"
 
           # Zathura and its plugins
           "homebrew-zathura/zathura/zathura"
