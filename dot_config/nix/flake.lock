@@ -144,7 +144,24 @@
         "jorgelbg-tap": "jorgelbg-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "zathura-tap": "zathura-tap"
+      }
+    },
+    "zathura-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773938161,
+        "narHash": "sha256-lVGXxB5IKy7reMMLIVtDZVSnVKtKQ35xLqhCdOEKcxs=",
+        "owner": "homebrew-zathura",
+        "repo": "homebrew-zathura",
+        "rev": "7e256f501f6aa733dc2afb9af2ebecdbb36cafc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew-zathura",
+        "repo": "homebrew-zathura",
+        "type": "github"
       }
     }
   },

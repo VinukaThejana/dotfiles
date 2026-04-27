@@ -23,9 +23,13 @@
       url = "github:asmvik/homebrew-formulae";
       flake = false;
     };
+    zathura-tap = {
+      url = "github:homebrew-zathura/homebrew-zathura";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, asmvik-tap, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, asmvik-tap, zathura-tap, ... }:
   let
     configuration = { pkgs, ... }: {
       system.primaryUser = "vinuka";
@@ -114,6 +118,7 @@
         resvg        # For SVG rendering
         tesseract
         yt-dlp
+        pandoc
       ];
 
       homebrew = {
@@ -209,6 +214,14 @@
           "exiftool"
           "arduino-cli"
 
+          # Zathura and its plugins
+          "homebrew-zathura/zathura/zathura"
+          "homebrew-zathura/zathura/zathura-cb"
+          "homebrew-zathura/zathura/zathura-djvu"
+          "homebrew-zathura/zathura/zathura-pdf-mupdf"
+          "homebrew-zathura/zathura/zathura-pdf-poppler"
+          "homebrew-zathura/zathura/zathura-ps"
+
           #-- Tocuh ID and Security --
           "pinentry"
           "pinentry-mac"
@@ -274,6 +287,7 @@
               "homebrew/homebrew-cask" = homebrew-cask;
               "jorgelbg/tap" = jorgelbg-tap;
               "asmvik/formulae" = asmvik-tap;
+              "homebrew-zathura/zathura" = zathura-tap;
             };
           };
         }
