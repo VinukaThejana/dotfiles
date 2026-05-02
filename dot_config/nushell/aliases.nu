@@ -32,4 +32,6 @@ alias flake-update = nix flake update
 
 alias xdg-open = run-external open
 
+alias icloud = cd `/Users/vinuka/Library/Mobile Documents/com~apple~CloudDocs`
+
 ('/usr/bin/paru' | path exists) and ('/usr/bin/yay' | path exists) and (alias yay = paru)
