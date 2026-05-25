@@ -334,7 +334,6 @@ def video_resolution [
   }
 }
 
-
 def notify [
   message: string # the message to display in the notification
 ] {
