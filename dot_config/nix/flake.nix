@@ -27,9 +27,13 @@
       url = "github:homebrew-zathura/homebrew-zathura";
       flake = false;
     };
+    hashicorp-tap = {
+      url = "github:hashicorp/homebrew-tap";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, asmvik-tap, zathura-tap, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, jorgelbg-tap, asmvik-tap, zathura-tap, hashicorp-tap, ... }:
   let
     configuration = { pkgs, ... }: {
       system.primaryUser = "vinuka";
@@ -183,8 +187,7 @@
           "google-drive"
         ];
         brews = [
-          #-- Window manager --
-          "asmvik/formulae/yabai"
+          #-- Window Management --
           "asmvik/formulae/skhd"
 
           #-- Development Toolchains & Runtimes --
@@ -193,12 +196,19 @@
           "protoc-gen-go"
           "coreutils"
           "pv"
+          "openssl"
+          "pkg-config"
+          "terraform-ls"
+          "hashicorp/tap/terraform"
 
           #-- AI --
           "gemini-cli"
 
           #-- Media & Document Processing --
           "jpeg-xl"
+
+          #-- Languages --
+          "zig"
 
           #-- CLI user applications --
           "iredis"
@@ -289,6 +299,7 @@
               "jorgelbg/tap" = jorgelbg-tap;
               "asmvik/formulae" = asmvik-tap;
               "homebrew-zathura/zathura" = zathura-tap;
+              "hashicorp/homebrew-tap" = hashicorp-tap;
             };
           };
         }
